@@ -2,10 +2,10 @@
 
 GFlowNets are generative models that learn to sample compositional objects (e.g. molecules, graphs, sequences) _proportionally to a reward_ using a learned flow through a state space. They differ from traditional generative models by using a _trajectory-based_ approach inspired by reinforcement learning (but not optimizing expected return). GFlowNets projects require the following:
 
-- Environment/state space definition
+- **Environment/state space definition:** This defines how the state is constructed and which actions are legal at each step. `MoleculeEnv` add atoms/bonds incrementally, `GraphEnv` build graphs node by node, `SequenceEnv` build sequence/token chains. We must implement `reset()`, `step(action)`, `get_valid_actions()`, `is_terminal()`, `get_state_representation()`.
 - Trajectory generation model
 - Flow learning objective (e.g. trajectory balance, detailed balance)
-- Training loop with sampling and updates
+- **Training loop with sampling and updates:** `training/` contains the core learning objectives, where each trainer implements a different learning algorithm. 
 - Reward function
 - Evaluation suite 
 
